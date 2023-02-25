@@ -6,6 +6,8 @@ I started my career writing Smalltalk programs. It is a language with the purest
 
 To demonstrate the idea I have written two versions of the Conway's Game of Life in Python. The first one follows the object-oriented style.
 
+## OOP-style version
+
 ```python
 import random
 
@@ -80,6 +82,8 @@ for t in range(100):
 The code above is somewhat pathalogical but nicely illustrates the idea. I aggressively follow the object-oriented paradigm and represent classes of the Field and the Cell. The first problem here is that the Cell class is too simplistic. By introducing it we inject redundant methods and complexity. The second problem is that these classes have to keep references to each other. It complicates the logic. As the result we have 70 lines of messy code.
 
 Let's move to the second version.
+
+## Convolution-based version
 
 ```python
 import numpy as np
