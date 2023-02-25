@@ -1,6 +1,6 @@
 # game-of-life-convolution
 
-One way to implement the Game of Life or why I don't like OOP
+*Two ways to implement the Game of Life or why I don't like OOP*
 
 I started my career writing Smalltalk programs. It is a language with the purest object-oriented style. Everything is an object and objects communitcate by sending messages. I strongly believed it was a proper way to represent the reality. Later I have changed my mind dramatically. Now I think the proper way of writing code is to keep it minimalistic and practical.
 
