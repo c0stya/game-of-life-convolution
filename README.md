@@ -97,7 +97,21 @@ for i in range(100):
     field = (new_field == 3) + (new_field == 4) * field
 ```
 
-So, that's it. 9 lines of code to do the same job. There are few ideas to explain:
+A few things to explain:
+
+- `convolve2d` with kernel 3x3 of ones is technically a summation within the field 3x3. The result of the summation is placed in the center of the 3x3 field.
+- `new_field == 3` indicates that there are 3 cells alive including the central cell. We have two cases:
+
+    * if the central cell was alive then it had 2 neighbors so keep it alive
+    * if the central cell was dead then it had 3 neighbors so the central cell would be born the next step
+    In either case the central cell should be alive next turn.
+- `new_field == 4` indicates there are 4 cells alive including the central cell. We have two cases:
+
+    * if the central cell was alive, then it had 3 neighbors so keep it alive next turn
+    * if the central cell was dead, then it had 4 neighbors thus it should be dead next turn
+    There is not enough information in the convolved field to distinguish between the two cases above. So we have to look back at the previous state to check if the central cell was alive or not. We do it implicitly by multiplying the convolved field by the previous state of the field.
+
+So, that's it. 9 lines of code to do the same job. The key differences to the previous OOP version:
 - we don't really need the cell as a separate class, it is just binary value
 - the field is nicely represented by a binary 2D matrix
 - the whole logic for the local summation can be represented as convolution operator
