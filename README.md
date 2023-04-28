@@ -104,11 +104,13 @@ A few things to explain:
 
     * if the central cell was alive then it had 2 neighbors so keep it alive
     * if the central cell was dead then it had 3 neighbors so the central cell would be born the next step
+
     In either case the central cell should be alive next turn.
 - `new_field == 4` indicates there are 4 cells alive including the central cell. We have two cases:
 
     * if the central cell was alive, then it had 3 neighbors so keep it alive next turn
     * if the central cell was dead, then it had 4 neighbors thus it should be dead next turn
+
     There is not enough information in the convolved field to distinguish between the two cases above. So we have to look back at the previous state to check if the central cell was alive or not. We do it implicitly by multiplying the convolved field by the previous state of the field.
 
 So, that's it. 9 lines of code to do the same job. The key differences to the previous OOP version:
